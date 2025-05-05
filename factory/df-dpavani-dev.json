@@ -1,0 +1,9 @@
+{
+	"name": "df-dpavani-dev",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c3ddd9f5-410c-43bb-9923-1aaac8bb21af",
+		"tenantId": "c6432ef9-2257-46d1-8b41-3fe8d7d401cf"
+	}
+}

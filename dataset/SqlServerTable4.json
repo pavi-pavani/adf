@@ -1,0 +1,25 @@
+{
+	"name": "SqlServerTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_selfhost",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"X": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SALES",
+			"table": {
+				"value": "@dataset().X",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
