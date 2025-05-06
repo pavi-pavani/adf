@@ -2,38 +2,34 @@
 	"name": "DelimitedText3",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls",
+			"referenceName": "lnk_adls1",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"x": {
-				"type": "string"
-			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().x",
-					"type": "Expression"
-				},
+				"fileName": "Person_AddressType_360.csv",
 				"folderPath": "data",
-				"fileSystem": "pavani-container-dev"
+				"fileSystem": "pavani-container-dev1"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "|",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "AddressTypeID",
+				"name": "BusinessEntityID",
 				"type": "String"
 			},
 			{
-				"name": "Name",
+				"name": "AddressID",
+				"type": "String"
+			},
+			{
+				"name": "AddressTypeID",
 				"type": "String"
 			},
 			{

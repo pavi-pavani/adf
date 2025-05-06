@@ -2,7 +2,7 @@
 	"name": "DelimitedText7",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls",
+			"referenceName": "lnk_adls1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "data/lookupfiles",
-				"fileSystem": "pavani-container-dev"
+				"folderPath": "advtables68",
+				"fileSystem": "pavani-container-dev1"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
