@@ -2,7 +2,7 @@
 	"name": "AzureSqlTable12",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_azuresql",
+			"referenceName": "azuresql_1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Person_BusinessEntity"
+			"table": ""
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

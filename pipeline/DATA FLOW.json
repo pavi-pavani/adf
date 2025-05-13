@@ -1,0 +1,37 @@
+{
+	"name": "DATA FLOW",
+	"properties": {
+		"activities": [
+			{
+				"name": "dataflow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF FILTER ADDRESS",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"folder": {
+			"name": "datapipeline"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-05-07T08:27:00Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

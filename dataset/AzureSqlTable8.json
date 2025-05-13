@@ -2,14 +2,15 @@
 	"name": "AzureSqlTable8",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_azuresql",
+			"referenceName": "azuresql_1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "dbo"
+			"schema": "dbo",
+			"table": "pipeline_log"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

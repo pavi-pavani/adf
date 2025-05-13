@@ -1,5 +1,5 @@
 {
-	"name": "AzureSqlTable4",
+	"name": "AzureSqlTable17",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "azuresql_1",
@@ -9,16 +9,24 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "AddressID",
+				"name": "ID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "AddressLine1",
+				"name": "Customer_Id",
 				"type": "varchar"
 			},
 			{
-				"name": "AddressLine2",
+				"name": "First_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Last_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Company",
 				"type": "varchar"
 			},
 			{
@@ -26,32 +34,33 @@
 				"type": "varchar"
 			},
 			{
-				"name": "StateProvinceID",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "PostalCode",
+				"name": "Country",
 				"type": "varchar"
 			},
 			{
-				"name": "SpatialLocation",
-				"type": "nvarchar"
+				"name": "Phone_1",
+				"type": "varchar"
 			},
 			{
-				"name": "rowguid",
-				"type": "nvarchar"
+				"name": "Phone_2",
+				"type": "varchar"
 			},
 			{
-				"name": "ModifiedDate",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
+				"name": "Email",
+				"type": "varchar"
+			},
+			{
+				"name": "Subscription_Date",
+				"type": "date"
+			},
+			{
+				"name": "Website",
+				"type": "varchar"
 			}
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Person_Address"
+			"table": "Customers"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

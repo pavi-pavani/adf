@@ -5,7 +5,14 @@
 			{
 				"name": "Get Metadata1",
 				"type": "GetMetadata",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Script1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -116,13 +123,42 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "azuresql_1",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "TRUNCATE TABLE   [dbo].[Person_Address]\nTRUNCATE TABLE   [dbo].[Person_AddressType]\nTRUNCATE TABLE   [dbo].[Person_BusinessEntity]\nTRUNCATE TABLE   [dbo].[Person_BusinessEntityAddress]\nTRUNCATE TABLE   [dbo].[Person_BusinessEntityContact]\nTRUNCATE TABLE   [dbo].[Person_ContactType]\nTRUNCATE TABLE   [dbo].[Person_CountryRegion]\nTRUNCATE TABLE   [dbo].[Person_Password]\nTRUNCATE TABLE   [dbo].[Person_PersonPhone]\nTRUNCATE TABLE   [dbo].[Person_phoneNumberType]\n\n",
+								"type": "Expression"
+							}
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
 			}
 		],
 		"folder": {
 			"name": "datapipeline"
 		},
 		"annotations": [],
-		"lastPublishTime": "2025-05-06T11:21:22Z"
+		"lastPublishTime": "2025-05-08T05:07:44Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
