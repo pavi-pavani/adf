@@ -2,7 +2,7 @@
 	"name": "DelimitedText20",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls",
+			"referenceName": "lnk_adls1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,18 +10,30 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Person_AddressType_360.csv",
-				"folderPath": "data",
-				"fileSystem": "pavani-container-dev"
+				"fileName": "employees_2.csv",
+				"folderPath": "union",
+				"fileSystem": "pavani-container-dev1"
 			},
-			"columnDelimiter": "|",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "AddressTypeID|Name|rowguid|ModifiedDate",
+				"name": "employee_id",
+				"type": "String"
+			},
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			},
+			{
+				"name": "department",
 				"type": "String"
 			}
 		]

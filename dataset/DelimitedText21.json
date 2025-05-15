@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText19",
+	"name": "DelimitedText21",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "lnk_adls1",
@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "employees_1.csv",
-				"folderPath": "union",
+				"folderPath": "union/unionoutput",
 				"fileSystem": "pavani-container-dev1"
 			},
 			"columnDelimiter": ",",
@@ -19,24 +18,7 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "employee_id",
-				"type": "String"
-			},
-			{
-				"name": "first_name",
-				"type": "String"
-			},
-			{
-				"name": "last_name",
-				"type": "String"
-			},
-			{
-				"name": "department",
-				"type": "String"
-			}
-		]
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

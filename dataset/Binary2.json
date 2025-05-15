@@ -1,24 +1,20 @@
 {
-	"name": "DelimitedText24",
+	"name": "Binary2",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "lnk_adls1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Binary",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "union/SELECT TRANSFORMATION/SELECTOUTPUT",
+				"fileName": "LASTFILE.CTL",
+				"folderPath": "FILE",
 				"fileSystem": "pavani-container-dev1"
-			},
-			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
-		},
-		"schema": []
+			}
+		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

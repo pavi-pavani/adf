@@ -2,7 +2,7 @@
 	"name": "DelimitedText22",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls",
+			"referenceName": "lnk_adls1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,18 +10,29 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Person_BusinessEntity_203.csv",
-				"folderPath": "data",
-				"fileSystem": "pavani-container-dev"
+				"folderPath": "union/unionoutput",
+				"fileSystem": "pavani-container-dev1"
 			},
-			"columnDelimiter": "|",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "BusinessEntityID|rowguid|ModifiedDate",
+				"name": "employee_id",
+				"type": "String"
+			},
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			},
+			{
+				"name": "department",
 				"type": "String"
 			}
 		]

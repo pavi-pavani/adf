@@ -1,9 +1,9 @@
 {
-	"name": "pipeSCD2",
+	"name": "pipescdnew",
 	"properties": {
 		"activities": [
 			{
-				"name": "dataflowSCD2",
+				"name": "dataflowscd1new",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflowSCD2",
+						"referenceName": "dataflowscd1new",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -28,7 +28,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2025-05-13T09:42:51Z"
+		"lastPublishTime": "2025-05-14T09:38:00Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

@@ -1,9 +1,9 @@
 {
-	"name": "pipeSCD2",
+	"name": "pipeunion",
 	"properties": {
 		"activities": [
 			{
-				"name": "dataflowSCD2",
+				"name": "union_dataflow",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflowSCD2",
+						"referenceName": "union_dataflow",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -28,7 +28,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2025-05-13T09:42:51Z"
+		"lastPublishTime": "2025-05-14T06:16:09Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
