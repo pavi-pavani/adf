@@ -1,0 +1,29 @@
+{
+	"name": "DelimitedText40",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_adls1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"structure": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "data4",
+				"fileSystem": "pavani-container-dev1"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

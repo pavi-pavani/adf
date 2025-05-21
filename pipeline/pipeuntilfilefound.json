@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@equals(variables('filefound'),true)",
+						"value": "@activity('Get Metadata1').output.exists",
 						"type": "Expression"
 					},
 					"activities": [
@@ -44,8 +44,8 @@
 							}
 						},
 						{
-							"name": "Wait1",
-							"type": "Wait",
+							"name": "If Condition1",
+							"type": "IfCondition",
 							"dependsOn": [
 								{
 									"activity": "Get Metadata1",
@@ -56,11 +56,44 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"waitTimeInSeconds": 120
+								"expression": {
+									"value": "@activity('Get Metadata1').output.exists",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "Wait1",
+										"type": "Wait",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"waitTimeInSeconds": 120
+										}
+									}
+								],
+								"ifTrueActivities": [
+									{
+										"name": "Set variable1",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"policy": {
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "filefound",
+											"value": {
+												"value": "@activity('Get Metadata1').output.exists",
+												"type": "Expression"
+											}
+										}
+									}
+								]
 							}
 						}
 					],
-					"timeout": "0.00:01:00"
+					"timeout": "0.00:05:00"
 				}
 			},
 			{
@@ -188,12 +221,11 @@
 		],
 		"variables": {
 			"filefound": {
-				"type": "Boolean",
-				"defaultValue": true
+				"type": "Boolean"
 			}
 		},
 		"annotations": [],
-		"lastPublishTime": "2025-05-15T06:20:41Z"
+		"lastPublishTime": "2025-05-16T11:32:21Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

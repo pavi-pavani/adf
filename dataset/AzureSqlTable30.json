@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlTable30",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azuresql_1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Student1"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
