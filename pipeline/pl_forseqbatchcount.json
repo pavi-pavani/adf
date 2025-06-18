@@ -1,0 +1,163 @@
+{
+	"name": "pl_forseqbatchcount",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "Script1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DelimitedText30",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 50,
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DelimitedText31",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlTable19",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename2": {
+											"value": "@substring(item().name,0,lastindexof(item().name,'.csv'))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "lnk_azure21",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "truncate table production_ScrapReason\ntruncate table production_ProductSubcategory\ntruncate table production_ProductReview\ntruncate table Production_ProductPhoto\ntruncate table Production_ProductModelProductDescriptionCulture\ntruncate table Production_ProductModelIllustration\ntruncate table Production_ProductModel\ntruncate table Production_ProductListPriceHistory\ntruncate table Production_TransactionHistory\ntruncate table Production_TransactionHistoryArchive\ntruncate table Production_UnitMeasure\ntruncate table Production_WorkOrder\ntruncate table production_productInventory\ntruncate table Production_WorkOrderRouting\ntruncate table production_BillOfMaterials\ntruncate table production_Culture\ntruncate table production_Document \ntruncate table production_Illustration\ntruncate table production_Location\ntruncate table production_Product \ntruncate table production_ProductCategory\ntruncate table production_ProductCosthistory\ntruncate table production_ProductDescription\ntruncate table production_productdocument\ntruncate table production_productproductphoto\n\ntruncate table  HumanResources_Department\ntruncate table HumanResources_Employee\ntruncate table HumanResources_EmployeeDepartmentHistory\ntruncate table HumanResources_EmployeePayHistory\ntruncate table HumanResources_JobCandidate\n\ntruncate  table  Purchasing_ProductVendor\ntruncate  table  Purchasing_PurchaseOrderDetail\ntruncate  table  Purchasing_ShipMethod\ntruncate  table  Purchasing_Vendor\ntruncate  table  Purchasing_PurchaseOrderHeader\n\nTRUNCATE TABLE Sales_Store\nTRUNCATE TABLE Sales_SpecialOfferProduct\nTRUNCATE TABLE Sales_SpecialOffer\nTRUNCATE TABLE Sales_ShoppingCartItem\nTRUNCATE TABLE Sales_SalesTerritoryHistory\nTRUNCATE TABLE Sales_SalesTerritory\nTRUNCATE TABLE Sales_SalesTaxRate\nTRUNCATE TABLE Sales_SalesReason\nTRUNCATE TABLE Sales_SalesPersonQuotaHistory\nTRUNCATE TABLE Sales_SalesPerson\nTRUNCATE TABLE Sales_SalesOrderHeaderSalesReason\nTRUNCATE TABLE Sales_SalesOrderHeader\nTRUNCATE TABLE Sales_SalesOrderDetail\nTRUNCATE TABLE Sales_PersonCreditCard\nTRUNCATE TABLE Sales_CountryRegionCurrency\nTRUNCATE TABLE Sales_CreditCard\nTRUNCATE TABLE Sales_CurrencyRate\nTRUNCATE TABLE Sales_Currency\nTRUNCATE TABLE Sales_Customer\n\nTRUNCATE TABLE   [dbo].[Person_Address]\nTRUNCATE TABLE   [dbo].[Person_AddressType]\nTRUNCATE TABLE   [dbo].[Person_BusinessEntity]\nTRUNCATE TABLE   [dbo].[Person_BusinessEntityAddress]\nTRUNCATE TABLE   [dbo].[Person_BusinessEntityContact]\nTRUNCATE TABLE   [dbo].[Person_ContactType]\nTRUNCATE TABLE   [dbo].[Person_CountryRegion]\nTRUNCATE TABLE   [dbo].[Person_Password]\nTRUNCATE TABLE   [dbo].[Person_PersonPhone]\nTRUNCATE TABLE   [dbo].[Person_phoneNumberType]\nTRUNCATE TABLE   [dbo].[Person_StateProvince]\nTRUNCATE TABLE   [dbo].[Person_EmailAddress]\n\n\n\n\n\n\n\n",
+								"type": "Expression"
+							}
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-06-06T10:42:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

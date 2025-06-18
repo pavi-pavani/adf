@@ -2,24 +2,12 @@
 	"name": "AzureSqlTable6",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "azuresql_1",
+			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"y": {
-				"type": "string"
-			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": {
-				"value": "@dataset().y",
-				"type": "Expression"
-			}
-		}
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

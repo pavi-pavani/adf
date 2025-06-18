@@ -2,65 +2,15 @@
 	"name": "AzureSqlTable17",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "azuresql_1",
+			"referenceName": "lnk_azure21",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [
-			{
-				"name": "ID",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "Customer_Id",
-				"type": "varchar"
-			},
-			{
-				"name": "First_Name",
-				"type": "varchar"
-			},
-			{
-				"name": "Last_Name",
-				"type": "varchar"
-			},
-			{
-				"name": "Company",
-				"type": "varchar"
-			},
-			{
-				"name": "City",
-				"type": "varchar"
-			},
-			{
-				"name": "Country",
-				"type": "varchar"
-			},
-			{
-				"name": "Phone_1",
-				"type": "varchar"
-			},
-			{
-				"name": "Phone_2",
-				"type": "varchar"
-			},
-			{
-				"name": "Email",
-				"type": "varchar"
-			},
-			{
-				"name": "Subscription_Date",
-				"type": "date"
-			},
-			{
-				"name": "Website",
-				"type": "varchar"
-			}
-		],
+		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Customers"
+			"table": "pipeline_log"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

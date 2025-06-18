@@ -2,16 +2,25 @@
 	"name": "DelimitedText21",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls1",
+			"referenceName": "lnk_adls21",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"name": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "union/unionoutput",
-				"fileSystem": "pavani-container-dev1"
+				"fileName": {
+					"value": "@dataset().name",
+					"type": "Expression"
+				},
+				"folderPath": "schemafiles",
+				"fileSystem": "pavani-container21"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

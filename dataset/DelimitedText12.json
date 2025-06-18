@@ -2,7 +2,7 @@
 	"name": "DelimitedText12",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls1",
+			"referenceName": "lnk_adls21",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -19,32 +19,15 @@
 					"value": "@dataset().x",
 					"type": "Expression"
 				},
-				"folderPath": "data",
-				"fileSystem": "pavani-container-dev1"
+				"folderPath": "files",
+				"fileSystem": "pavani-container21"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "AddressTypeID",
-				"type": "String"
-			},
-			{
-				"name": "Name",
-				"type": "String"
-			},
-			{
-				"name": "rowguid",
-				"type": "String"
-			},
-			{
-				"name": "ModifiedDate",
-				"type": "String"
-			}
-		]
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

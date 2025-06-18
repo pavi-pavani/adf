@@ -2,7 +2,7 @@
 	"name": "DelimitedText10",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls1",
+			"referenceName": "lnk_adls21",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,8 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "data",
-				"fileSystem": "pavani-container-dev1"
+				"fileName": "HumanResources_Department.csv",
+				"folderPath": "parameters/p1",
+				"fileSystem": "pavani-container21"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -20,7 +21,7 @@
 		},
 		"schema": [
 			{
-				"name": "AddressTypeID",
+				"name": "DepartmentID",
 				"type": "String"
 			},
 			{
@@ -28,7 +29,7 @@
 				"type": "String"
 			},
 			{
-				"name": "rowguid",
+				"name": "GroupName",
 				"type": "String"
 			},
 			{

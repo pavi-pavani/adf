@@ -2,7 +2,7 @@
 	"name": "DelimitedText17",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls1",
+			"referenceName": "lnk_adls21",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,65 +10,15 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "customers-100 1.csv",
-				"folderPath": "customer",
-				"fileSystem": "pavani-container-dev1"
+				"folderPath": "schemafiles",
+				"fileSystem": "pavani-container21"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "ID",
-				"type": "String"
-			},
-			{
-				"name": "Customer Id",
-				"type": "String"
-			},
-			{
-				"name": "First Name",
-				"type": "String"
-			},
-			{
-				"name": "Last Name",
-				"type": "String"
-			},
-			{
-				"name": "Company",
-				"type": "String"
-			},
-			{
-				"name": "City",
-				"type": "String"
-			},
-			{
-				"name": "Country",
-				"type": "String"
-			},
-			{
-				"name": "Phone 1",
-				"type": "String"
-			},
-			{
-				"name": "Phone 2",
-				"type": "String"
-			},
-			{
-				"name": "Email",
-				"type": "String"
-			},
-			{
-				"name": "Subscription Date",
-				"type": "String"
-			},
-			{
-				"name": "Website",
-				"type": "String"
-			}
-		]
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

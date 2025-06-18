@@ -1,0 +1,26 @@
+{
+	"name": "pipeline_pl",
+	"properties": {
+		"activities": [
+			{
+				"name": "pl_keyvault",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_keyvault",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-06-02T05:09:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

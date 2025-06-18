@@ -2,15 +2,23 @@
 	"name": "AzureSqlTable15",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "azuresql_1",
+			"referenceName": "lnk_azure21",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"name2": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "",
-			"table": ""
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().name2",
+				"type": "Expression"
+			}
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

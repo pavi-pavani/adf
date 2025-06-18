@@ -2,7 +2,7 @@
 	"name": "DelimitedText3",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls1",
+			"referenceName": "lnk_adls21",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,37 +10,16 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Person_AddressType_360.csv",
-				"folderPath": "data",
-				"fileSystem": "pavani-container-dev1"
+				"fileName": "HumanResources_Shift.csv",
+				"folderPath": "parameters/p1",
+				"fileSystem": "pavani-container21"
 			},
-			"columnDelimiter": "|",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "BusinessEntityID",
-				"type": "String"
-			},
-			{
-				"name": "AddressID",
-				"type": "String"
-			},
-			{
-				"name": "AddressTypeID",
-				"type": "String"
-			},
-			{
-				"name": "rowguid",
-				"type": "String"
-			},
-			{
-				"name": "ModifiedDate",
-				"type": "String"
-			}
-		]
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

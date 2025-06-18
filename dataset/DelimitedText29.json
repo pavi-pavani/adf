@@ -2,7 +2,7 @@
 	"name": "DelimitedText29",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls1",
+			"referenceName": "lnk_adls21",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,52 +10,15 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "FILE",
-				"fileSystem": "pavani-container-dev1"
+				"folderPath": "schemafiles",
+				"fileSystem": "pavani-container21"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "AddressID",
-				"type": "String"
-			},
-			{
-				"name": "AddressLine1",
-				"type": "String"
-			},
-			{
-				"name": "AddressLine2",
-				"type": "String"
-			},
-			{
-				"name": "City",
-				"type": "String"
-			},
-			{
-				"name": "StateProvinceID",
-				"type": "String"
-			},
-			{
-				"name": "PostalCode",
-				"type": "String"
-			},
-			{
-				"name": "SpatialLocation",
-				"type": "String"
-			},
-			{
-				"name": "rowguid",
-				"type": "String"
-			},
-			{
-				"name": "ModifiedDate",
-				"type": "String"
-			}
-		]
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

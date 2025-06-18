@@ -2,17 +2,25 @@
 	"name": "DelimitedText19",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls1",
+			"referenceName": "lnk_adls21",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"x": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "employees_1.csv",
-				"folderPath": "union",
-				"fileSystem": "pavani-container-dev1"
+				"fileName": {
+					"value": "@dataset().x",
+					"type": "Expression"
+				},
+				"folderPath": "schemafiles",
+				"fileSystem": "pavani-container21"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -21,19 +29,19 @@
 		},
 		"schema": [
 			{
-				"name": "employee_id",
+				"name": "DepartmentID",
 				"type": "String"
 			},
 			{
-				"name": "first_name",
+				"name": "Name",
 				"type": "String"
 			},
 			{
-				"name": "last_name",
+				"name": "GroupName",
 				"type": "String"
 			},
 			{
-				"name": "department",
+				"name": "ModifiedDate",
 				"type": "String"
 			}
 		]
