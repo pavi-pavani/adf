@@ -1,0 +1,9 @@
+{
+	"name": "df-keerthi-dev1234",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a99f4c05-7945-4d58-a4d2-9b5b1f48d603",
+		"tenantId": "29a25b0c-1189-4e8e-a756-4a231ddc0d14"
+	}
+}

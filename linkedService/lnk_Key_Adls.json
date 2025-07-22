@@ -1,0 +1,19 @@
+{
+	"name": "lnk_Key_Adls",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://devveeramreddydatalake.dfs.core.windows.net",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "lnk_AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "KeyAzureAdls"
+			}
+		}
+	}
+}

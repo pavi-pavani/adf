@@ -1,0 +1,25 @@
+{
+	"name": "src_ds_AzureSql_Today_data_load",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_AzureSql",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"x": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().x",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

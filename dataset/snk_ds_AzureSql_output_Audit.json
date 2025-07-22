@@ -1,0 +1,17 @@
+{
+	"name": "snk_ds_AzureSql_output_Audit",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_AzureSql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "pipeline_log"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

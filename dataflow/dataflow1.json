@@ -1,0 +1,162 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "src_ds_df_adls_scd_type2",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "src2_ds_df_AzureSql_scd_type2",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "snk1_ds_df_AzureSql_scd_type2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "snk2_ds_df_AzureSql_scd_type2",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "exists1"
+				},
+				{
+					"name": "filter1"
+				},
+				{
+					"name": "exists2"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          address as string,",
+				"          phone_number as string,",
+				"          email as string,",
+				"          created_by as string,",
+				"          created_at as string,",
+				"          updated_by as string,",
+				"          updated_at as string,",
+				"          is_active as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          id as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          address as string,",
+				"          phone_number as string,",
+				"          email as string,",
+				"          is_active as boolean",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source2",
+				"source1 derive(src_hashkey = md5(address,phone_number,email),",
+				"          status1 = 1) ~> derivedColumn1",
+				"source2 derive(snk_hashkey = md5(address,phone_number,email),",
+				"          status2 = 0) ~> derivedColumn2",
+				"derivedColumn1, derivedColumn2 exists(source1@id==source2@id && src_hashkey==snk_hashkey,",
+				"     negate:true,",
+				"     broadcast: 'auto')~> exists1",
+				"derivedColumn2 filter(is_active==true()) ~> filter1",
+				"filter1, derivedColumn1 exists(source2@id==source1@id && snk_hashkey!=src_hashkey,",
+				"     negate:false,",
+				"     broadcast: 'auto')~> exists2",
+				"exists2 alterRow(updateIf(1==1)) ~> alterRow1",
+				"exists1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          address as string,",
+				"          phone_number as string,",
+				"          email as string,",
+				"          is_active as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 2,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          id,",
+				"          first_name,",
+				"          last_name,",
+				"          address,",
+				"          phone_number,",
+				"          email,",
+				"          is_active = status1",
+				"     )) ~> sink1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          address as string,",
+				"          phone_number as string,",
+				"          email as string,",
+				"          is_active as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['id'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          id,",
+				"          first_name,",
+				"          last_name,",
+				"          address,",
+				"          phone_number,",
+				"          email,",
+				"          is_active = status2",
+				"     )) ~> sink2"
+			]
+		}
+	}
+}

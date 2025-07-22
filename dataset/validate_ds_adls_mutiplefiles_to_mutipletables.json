@@ -1,0 +1,20 @@
+{
+	"name": "validate_ds_adls_mutiplefiles_to_mutipletables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "lastfile.ctl",
+				"folderPath": "Data",
+				"fileSystem": "keerthana-container-dev"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

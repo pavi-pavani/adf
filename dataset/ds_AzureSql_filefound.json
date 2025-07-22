@@ -1,0 +1,25 @@
+{
+	"name": "ds_AzureSql_filefound",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_AzureSql",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"y": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().y",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

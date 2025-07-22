@@ -2,15 +2,40 @@
 	"name": "AzureSqlTable1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_azure21",
+			"referenceName": "lnk_AzureSql",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
+		"schema": [
+			{
+				"name": "BusinessEntityID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RateChangeDate",
+				"type": "date"
+			},
+			{
+				"name": "Rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PayFrequency",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "abcd"
+			"table": "HumanResources_EmployeePayHistory"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

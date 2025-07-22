@@ -2,7 +2,7 @@
 	"name": "DelimitedText2",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls_keyvault",
+			"referenceName": "lnk_adls",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,16 +10,33 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "HumanResources_Employee.csv",
-				"folderPath": "parameters/p1",
-				"fileSystem": "pavani-container21"
+				"fileName": "HumanResources_Department.csv",
+				"folderPath": "Human Resources",
+				"fileSystem": "veeramreddy"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "DepartmentID",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "GroupName",
+				"type": "String"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "String"
+			}
+		]
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

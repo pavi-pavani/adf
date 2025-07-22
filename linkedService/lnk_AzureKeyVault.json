@@ -1,0 +1,11 @@
+{
+	"name": "lnk_AzureKeyVault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://veeramreddy.vault.azure.net/"
+		}
+	}
+}

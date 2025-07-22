@@ -2,7 +2,7 @@
 	"name": "Binary2",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lnk_adls1",
+			"referenceName": "lnk_adls",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,9 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "LASTFILE.CTL",
-				"folderPath": "FILE",
-				"fileSystem": "pavani-container-dev1"
+				"fileName": "lastfile.ctl",
+				"folderPath": "Human Resource",
+				"fileSystem": "keerthana-container-dev"
 			}
 		}
 	},

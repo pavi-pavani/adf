@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "load data",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -43,23 +43,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "src_ds_person_person",
+						"referenceName": "DelimitedText2",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "sink_ds_person_person",
+						"referenceName": "AzureSqlTable2",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
-		"folder": {
-			"name": "dev"
-		},
 		"annotations": [],
-		"lastPublishTime": "2025-04-24T07:14:53Z"
+		"lastPublishTime": "2025-07-22T10:51:14Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
