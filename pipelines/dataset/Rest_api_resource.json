@@ -1,0 +1,13 @@
+{
+	"name": "Rest_api_resource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_apirest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

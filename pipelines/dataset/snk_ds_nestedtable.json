@@ -1,0 +1,17 @@
+{
+	"name": "snk_ds_nestedtable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lnk_azure_sql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Employees"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

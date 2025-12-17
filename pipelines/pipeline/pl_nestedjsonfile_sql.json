@@ -1,0 +1,193 @@
+{
+	"name": "pl_nestedjsonfile_sql",
+	"properties": {
+		"activities": [
+			{
+				"name": "nestedjson_copy",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['employeeId']"
+								},
+								"sink": {
+									"name": "employeeId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']['first']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']['last']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contact']['email']"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contact']['phones'][0]['type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contact']['phones'][0]['number']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contact']['address']['line1']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contact']['address']['line2']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contact']['address']['city']"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['contact']['address']['pincode']"
+								},
+								"sink": {
+									"name": "pincode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['skills'][0]"
+								}
+							},
+							{
+								"source": {
+									"path": "$['projects'][0]['projectId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['projects'][0]['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['projects'][0]['role']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['projects'][0]['technologies'][0]"
+								}
+							},
+							{
+								"source": {
+									"path": "$['projects'][0]['tasks'][0]['taskId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['projects'][0]['tasks'][0]['description']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['projects'][0]['tasks'][0]['status']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['audit']['createdOn']"
+								},
+								"sink": {
+									"name": "createdOn",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['audit']['modifiedOn']"
+								},
+								"sink": {
+									"name": "modifiedOn",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['audit']['createdBy']"
+								},
+								"sink": {
+									"name": "createdBy",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "src_ds_nestedfile",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "snk_ds_nestedtable",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-11-24T11:13:26Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
